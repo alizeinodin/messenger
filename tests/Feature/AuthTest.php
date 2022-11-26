@@ -27,4 +27,25 @@ class AuthTest extends TestCase
 
         $response->assertStatus(201);
     }
+
+    public function test_login()
+    {
+        $req = [
+            'name' => 'name',
+            'username' => 'alizne',
+            'password' => '11111111'
+        ];
+        $response = $this->postJson(route('register', $req));
+
+
+        $response->assertStatus(201);
+
+        $req = [
+            'username' => 'alizne',
+            'password' => '11111111',
+        ];
+
+        $response = $this->postJson(route('login', $req));
+        $response->assertOk();
+    }
 }
