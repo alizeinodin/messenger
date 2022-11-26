@@ -49,7 +49,7 @@ class AuthController extends Controller
 
         $user = User::where([
             'username' => $cleanData['username']
-        ]);
+        ])->first();
 
         if (Auth::attempt(['username' => $cleanData['username'], 'password' => $cleanData['password']])) {
 
