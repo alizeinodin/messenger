@@ -9,14 +9,21 @@ use Tests\TestCase;
 class AuthTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * test register user
      *
      * @return void
      */
-    public function test_example()
+    public function test_register()
     {
-        $response = $this->get('/');
+//        $this->withoutExceptionHandling();
+        $req = [
+            'name' => 'name',
+            'username' => 'alizne',
+            'password' => '11111111'
+        ];
+        $response = $this->postJson(route('register', $req));
 
-        $response->assertStatus(200);
+
+        $response->assertStatus(201);
     }
 }
