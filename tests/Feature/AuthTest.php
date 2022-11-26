@@ -15,7 +15,6 @@ class AuthTest extends TestCase
      */
     public function test_register()
     {
-//        $this->withoutExceptionHandling();
         $req = [
             'name' => 'name',
             'username' => 'alizne',
