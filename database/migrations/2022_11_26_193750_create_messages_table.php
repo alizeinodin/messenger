@@ -24,7 +24,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            // define foreign key for sender
+            // define foreign key for receiver
             $table->foreignId('receiver_id')
                 ->constrained('users')
                 ->onUpdate('cascade')
