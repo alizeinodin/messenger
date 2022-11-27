@@ -15,7 +15,20 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->longText('content');
             $table->timestamps();
+
+            // define foreign key for sender
+            $table->foreignId('sender_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            // define foreign key for sender
+            $table->foreignId('receiver_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
