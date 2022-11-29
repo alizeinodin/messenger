@@ -10,6 +10,10 @@ class Message extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'content'
+    ];
+
     /**
      * Get the Sender that owns the Messages
      *
@@ -17,7 +21,7 @@ class Message extends Model
      */
     public function sender(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'sender_id');
+        return $this->belongsTo(User::class, 'sender_id', 'id');
     }
 
     /**
@@ -27,6 +31,6 @@ class Message extends Model
      */
     public function receiver(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'receiver_id');
+        return $this->belongsTo(User::class, 'receiver_id', 'id');
     }
 }
