@@ -11,4 +11,9 @@ use Tests\TestCase;
 class MessageTest extends TestCase
 {
     use RefreshDatabase;
+
+    private function createUser()
+    {
+        return User::factory()->make(1);
+    }
 }
