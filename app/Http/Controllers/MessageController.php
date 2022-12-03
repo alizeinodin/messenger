@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MessageRequest\SendMessageRequest;
 use App\Models\Message;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -32,10 +33,10 @@ class MessageController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param SendMessageRequest $request
      * @return Response|Application|ResponseFactory
      */
-    public function sendMessage(Request $request): Response|Application|ResponseFactory
+    public function sendMessage(SendMessageRequest $request): Response|Application|ResponseFactory
     {
         $cleanData = $request->validated();
 
