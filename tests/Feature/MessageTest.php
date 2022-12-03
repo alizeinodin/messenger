@@ -15,7 +15,7 @@ class MessageTest extends TestCase
 
     private function createUser()
     {
-        return User::factory()->make(1);
+        return User::factory()->create();
     }
 
     public function test_send_message()
