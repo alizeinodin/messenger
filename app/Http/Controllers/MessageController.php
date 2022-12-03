@@ -40,11 +40,11 @@ class MessageController extends Controller
     {
         $cleanData = $request->validated();
 
-        $message = Message::create([
-            'content' => $cleanData['content'],
-            'sender_id' => $request->user()->id,
-            'receiver_id' => $cleanData['receiver_id'],
-        ]);
+        $message = new Message();
+        $message->content = $cleanData['content'];
+        $message->receiver_id = $cleanData['receiver_id'];
+        $message->sender()->associate($request->user());
+        $message->save();
 
         $response = [
             'isOk' => 'true',
