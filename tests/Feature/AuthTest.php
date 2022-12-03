@@ -19,7 +19,7 @@ class AuthTest extends TestCase
     {
         $req = [
             'name' => 'name',
-            'username' => 'alizne',
+            'username' => fake()->unique()->userName(),
             'password' => '11111111'
         ];
         $response = $this->postJson(route('register', $req));
@@ -30,9 +30,10 @@ class AuthTest extends TestCase
 
     public function test_login()
     {
+        $username = fake()->unique()->userName();
         $req = [
             'name' => 'name',
-            'username' => 'alizne',
+            'username' => $username,
             'password' => '11111111'
         ];
         $response = $this->postJson(route('register', $req));
@@ -41,7 +42,7 @@ class AuthTest extends TestCase
         $response->assertStatus(201);
 
         $req = [
-            'username' => 'alizne',
+            'username' => $username,
             'password' => '11111111',
         ];
 
