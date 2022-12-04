@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MessageRequest\GetMessageRequest;
 use App\Http\Requests\MessageRequest\SendMessageRequest;
 use App\Models\Message;
 use Illuminate\Contracts\Foundation\Application;
@@ -13,17 +14,30 @@ use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 class MessageController extends Controller
 {
     /**
-     * @param Request $request
+     * @param GetMessageRequest $request
      * @return Application|ResponseFactory|Response
      */
-    public function getMessages(Request $request)
+    public function getLatestMessages(GetMessageRequest $request): Response|Application|ResponseFactory
     {
         $cleanData = $request->validated();
 
-        $messages = Message::where([
-            'sender_id' => $request->user(),
-            'receiver_id' => $cleanData['user_id'],
-        ])->all();
+        $messagesOne = Message::where([
+            'sender_id' => $request->user()->id,
+            'receiver_id' => $cleanData['receiver_id'],
+        ])
+            ->paginate(250);
+
+
+        $messagesTwo = Message::where([
+            'sender_id' => $cleanData['receiver_id'],
+            'receiver_id' => $request->user()->id,
+        ])
+            ->paginate(250);
+
+
+        $messages = $messagesTwo
+            ->merge($messagesOne)
+            ->sortBy('id');
 
         $response = [
             'messages' => $messages,
