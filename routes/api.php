@@ -33,6 +33,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::controller(MessageController::class)->group(function () {
         Route::post('/send_message', 'sendMessage')
             ->name('sendMessage');
+        Route::get('/get_message', 'getLatestMessages')
+            ->name('getMessage');
     });
 
 
