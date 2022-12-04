@@ -34,4 +34,46 @@ class MessageTest extends TestCase
         $response = $this->postJson(route('sendMessage', $request));
         $response->assertCreated();
     }
+
+    public function test_get_latest_messages()
+    {
+        $this->withoutExceptionHandling();
+
+        $sender = $this->createUser();
+        Sanctum::actingAs($sender);
+
+        $receiver = $this->createUser();
+
+        $message = 'TEXT MESSAGE';
+
+        // send message by sender
+        $request = [
+            'content' => $message,
+            'receiver_id' => $receiver->id
+        ];
+        $response = $this->postJson(route('sendMessage', $request));
+        $response->assertCreated();
+
+
+        // send message by receiver
+        Sanctum::actingAs($receiver);
+
+        $request = [
+            'content' => $message,
+            'receiver_id' => $sender->id
+        ];
+
+        $response = $this->postJson(route('sendMessage', $request));
+        $response->assertCreated();
+
+        // get latest messages
+        Sanctum::actingAs($sender);
+
+        $request = [
+            'receiver_id' => $receiver->id
+        ];
+
+        $response = $this->getJson(route('getMessage', $request));
+        $response->assertOk();
+    }
 }
