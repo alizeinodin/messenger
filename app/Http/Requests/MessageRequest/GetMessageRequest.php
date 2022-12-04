@@ -4,7 +4,7 @@ namespace App\Http\Requests\MessageRequest;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class getMessageRequest extends FormRequest
+class GetMessageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class getMessageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class getMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'receiver_id' => 'required|exists:users,id',
         ];
     }
 }
