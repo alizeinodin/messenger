@@ -52,6 +52,7 @@ class MessageTest extends TestCase
             'receiver_id' => $receiver->id
         ];
         $response = $this->postJson(route('sendMessage', $request));
+        $response = $this->postJson(route('sendMessage', $request));
         $response->assertCreated();
 
 
