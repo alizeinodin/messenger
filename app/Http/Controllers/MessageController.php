@@ -21,23 +21,15 @@ class MessageController extends Controller
     {
         $cleanData = $request->validated();
 
-        $messagesOne = Message::where([
+        $messages = Message::where([
             'sender_id' => $request->user()->id,
             'receiver_id' => $cleanData['receiver_id'],
         ])
-            ->paginate(250);
-
-
-        $messagesTwo = Message::where([
-            'sender_id' => $cleanData['receiver_id'],
-            'receiver_id' => $request->user()->id,
-        ])
-            ->paginate(250);
-
-
-        $messages = $messagesTwo
-            ->merge($messagesOne)
-            ->sortBy('id');
+            ->orWhere([
+                'sender_id' => $cleanData['receiver_id'],
+                'receiver_id' => $request->user()->id,
+            ])
+            ->paginate(500);
 
         $response = [
             'messages' => $messages,
