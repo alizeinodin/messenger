@@ -8,6 +8,16 @@ use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class UserController extends Controller
 {
+    public function user(Request $request)
+    {
+        $response = [
+            'user' => $request->user(),
+            'isOk' => 'true',
+        ];
+
+        response($response, ResponseAlias::HTTP_OK);
+    }
+
     public function find(Request $request)
     {
         $cleanData = $request->validated();
