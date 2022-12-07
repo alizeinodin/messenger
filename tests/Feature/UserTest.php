@@ -15,6 +15,7 @@ class UserTest extends TestCase
     {
         return User::factory()->create();
     }
+
     /**
      * get user of request in app
      * @return void
@@ -25,6 +26,21 @@ class UserTest extends TestCase
         $this->actingAs($user);
 
         $response = $this->getJson(route('user.get'));
+        $response->assertOk();
+    }
+
+    public function test_search_user()
+    {
+        User::factory()->count(100)->create(); // make 100 user
+
+        $user = $this->createUser();
+        $this->actingAs($user); // acting as a user in program
+
+        $request = [
+            'username' => 'ali',
+        ];
+
+        $response = $this->postJson(route('user.search', $request));
         $response->assertOk();
     }
 }
