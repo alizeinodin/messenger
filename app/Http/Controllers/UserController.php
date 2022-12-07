@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest\SearchRequest;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -30,10 +31,10 @@ class UserController extends Controller
     /**
      * search user by username
      *
-     * @param Request $request
+     * @param SearchRequest $request
      * @return Response|Application|ResponseFactory
      */
-    public function search(Request $request): Response|Application|ResponseFactory
+    public function search(SearchRequest $request): Response|Application|ResponseFactory
     {
         $cleanData = $request->validated();
 
