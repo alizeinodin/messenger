@@ -38,14 +38,18 @@ Route::middleware('auth:sanctum')->group(function () {
             ->name('getMessage');
     });
 
-    Route::controller(UserController::class)->group(function () {
-        Route::get('/get', 'user')
-            ->name('get');
-        Route::post('/search', 'search')
-            ->name('search');
-    })
-        ->prefix('/user')
-        ->name('user.');
+    Route::name('user.')->group(function () {
 
+        Route::prefix('/user')->group(function () {
+
+            Route::controller(UserController::class)->group(function () {
+                Route::get('/get', 'user')
+                    ->name('get');
+
+                Route::post('/search', 'search')
+                    ->name('search');
+            });
+        });
+    });
 
 });
