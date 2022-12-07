@@ -15,7 +15,7 @@ class UserController extends Controller
             'isOk' => 'true',
         ];
 
-        response($response, ResponseAlias::HTTP_OK);
+        return response($response, ResponseAlias::HTTP_OK);
     }
 
     public function search(Request $request)
