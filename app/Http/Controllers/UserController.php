@@ -3,12 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class UserController extends Controller
 {
-    public function user(Request $request)
+    /**
+     * get user of request
+     *
+     * @param Request $request
+     * @return Response|Application|ResponseFactory
+     */
+    public function user(Request $request): Response|Application|ResponseFactory
     {
         $response = [
             'user' => $request->user(),
@@ -18,7 +27,13 @@ class UserController extends Controller
         return response($response, ResponseAlias::HTTP_OK);
     }
 
-    public function search(Request $request)
+    /**
+     * search user by username
+     *
+     * @param Request $request
+     * @return Response|Application|ResponseFactory
+     */
+    public function search(Request $request): Response|Application|ResponseFactory
     {
         $cleanData = $request->validated();
 
