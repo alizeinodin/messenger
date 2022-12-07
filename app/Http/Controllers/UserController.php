@@ -38,9 +38,7 @@ class UserController extends Controller
     {
         $cleanData = $request->validated();
 
-        $users = User::where([
-            'username' => '%' . $cleanData['username'] . '%',
-        ])->get();
+        $users = User::where('username', 'LIKE', '%' . $cleanData['username'] . '%')->get();
 
         $response = [
             'result' => $users,
