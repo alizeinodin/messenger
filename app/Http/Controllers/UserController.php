@@ -18,7 +18,7 @@ class UserController extends Controller
         response($response, ResponseAlias::HTTP_OK);
     }
 
-    public function find(Request $request)
+    public function search(Request $request)
     {
         $cleanData = $request->validated();
 
