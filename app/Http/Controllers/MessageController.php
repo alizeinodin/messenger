@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessagePosted;
 use App\Http\Requests\MessageRequest\GetMessageRequest;
 use App\Http\Requests\MessageRequest\SendMessageRequest;
 use App\Models\Message;
@@ -51,6 +52,8 @@ class MessageController extends Controller
         $message->receiver_id = $cleanData['receiver_id'];
         $message->sender()->associate($request->user());
         $message->save();
+
+        event(new MessagePosted($message)); // send data to pusher
 
         $response = [
             'isOk' => 'true',
