@@ -52,4 +52,15 @@ Route::middleware('auth:sanctum')->group(function () {
         });
     });
 
+    Route::name('auth.')->group(function () {
+
+        Route::prefix('/auth')->group(function () {
+
+            Route::controller(AuthController::class)->group(function () {
+                Route::post('/logout', 'isLoggedIn')->name('logout');
+                Route::get('/isLoggedIn', 'isLoggedIn')->name('isLoggedIn');
+            });
+        });
+    });
+
 });
