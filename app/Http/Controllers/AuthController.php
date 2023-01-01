@@ -70,6 +70,15 @@ class AuthController extends Controller
 
     /**
      * @param Request $request
+     * @return bool
+     */
+    public function isLoggedIn(Request $request): bool
+    {
+        return $request->user()->check();
+    }
+
+    /**
+     * @param Request $request
      * @return Response|Application|ResponseFactory
      */
     public function logout(Request $request): Response|Application|ResponseFactory
