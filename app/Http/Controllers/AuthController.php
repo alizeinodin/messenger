@@ -67,4 +67,18 @@ class AuthController extends Controller
         ]);
 
     }
+
+    /**
+     * @param Request $request
+     * @return Response|Application|ResponseFactory
+     */
+    public function logout(Request $request): Response|Application|ResponseFactory
+    {
+        $request->user()->tokens()->delete(); // logout from all devices
+
+        $response = [
+            'message' => 'You have successfully logged out!',
+        ];
+        return \response($response, ResponseHTTP::HTTP_NO_CONTENT);
+    }
 }
