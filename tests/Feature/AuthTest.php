@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class AuthTest extends TestCase
@@ -54,5 +55,15 @@ class AuthTest extends TestCase
 
         $response = $this->postJson(route('login', $req));
         $response->assertOk();
+    }
+
+    public function test_logout()
+    {
+        Sanctum::actingAs(
+            User::factory()->create()
+        );
+        $this->assertAuthenticated();
+        $response = $this->postJson(route('api.logout'));
+        $response->assertStatus(204);
     }
 }
