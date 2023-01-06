@@ -63,7 +63,13 @@ class AuthTest extends TestCase
             User::factory()->create()
         );
         $this->assertAuthenticated();
-        $response = $this->postJson(route('api.logout'));
+        $response = $this->postJson(route('auth.logout'));
         $response->assertStatus(204);
+    }
+
+    public function test_is_user_logged_in_failed_if_user_not_login()
+    {
+        $response = $this->getJson(route('auth.isLoggedIn'));
+        $response->assertStatus(401);
     }
 }
