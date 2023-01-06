@@ -74,7 +74,7 @@ class AuthController extends Controller
      */
     public function isLoggedIn(Request $request): bool
     {
-        return $request->user()->check();
+        return Auth::check();
     }
 
     /**
