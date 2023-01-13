@@ -36,6 +36,6 @@ class MessagePosted implements ShouldBroadcast
      */
     public function broadcastOn(): Channel|PrivateChannel
     {
-        return new PrivateChannel('private_chat'. $this->sender_id . $this->receiver_id);
+        return new PrivateChannel('chat'.$this->receiver_id);
     }
 }
