@@ -10,6 +10,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class MessageController extends Controller
@@ -47,13 +48,15 @@ class MessageController extends Controller
     {
         $cleanData = $request->validated();
 
+        $user = $request->user();
+
         $message = new Message();
         $message->content = $cleanData['content'];
         $message->receiver_id = $cleanData['receiver_id'];
         $message->sender()->associate($request->user());
         $message->save();
 
-        event(new MessagePosted($message)); // send data to pusher
+        event(new MessagePosted($user, $message)); // send data to pusher
 
         $response = [
             'isOk' => 'true',
