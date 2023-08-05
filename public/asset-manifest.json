@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d19628d2.css",
+    "main.js": "/static/js/main.6e4e96e7.js",
+    "static/js/787.d3828a64.chunk.js": "/static/js/787.d3828a64.chunk.js",
+    "static/media/Vazir-Bold-FD.ttf": "/static/media/Vazir-Bold-FD.35f30251f57a2138ccc6.ttf",
+    "static/media/Vazir-Medium-FD.ttf": "/static/media/Vazir-Medium-FD.d4ebf0a93129847c603d.ttf",
+    "static/media/Vazir-Regular-FD.ttf": "/static/media/Vazir-Regular-FD.0a65b51bbb24279d1ca4.ttf",
+    "static/media/Note.mp3": "/static/media/Note.cb8465988441a761c1e4.mp3",
+    "static/media/user1.png": "/static/media/user1.66524f9ee37052dbda42.png",
+    "static/media/send.mp3": "/static/media/send.a5bec8808418add8d0ce.mp3",
+    "index.html": "/index.html",
+    "main.d19628d2.css.map": "/static/css/main.d19628d2.css.map",
+    "main.6e4e96e7.js.map": "/static/js/main.6e4e96e7.js.map",
+    "787.d3828a64.chunk.js.map": "/static/js/787.d3828a64.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d19628d2.css",
+    "static/js/main.6e4e96e7.js"
+  ]
+}
