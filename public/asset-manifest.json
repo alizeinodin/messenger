@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.d19628d2.css",
-    "main.js": "/static/js/main.6e4e96e7.js",
+    "main.css": "/static/css/main.be811de9.css",
+    "main.js": "/static/js/main.2e5724d4.js",
     "static/js/787.d3828a64.chunk.js": "/static/js/787.d3828a64.chunk.js",
     "static/media/Vazir-Bold-FD.ttf": "/static/media/Vazir-Bold-FD.35f30251f57a2138ccc6.ttf",
     "static/media/Vazir-Medium-FD.ttf": "/static/media/Vazir-Medium-FD.d4ebf0a93129847c603d.ttf",
@@ -10,12 +10,12 @@
     "static/media/user1.png": "/static/media/user1.66524f9ee37052dbda42.png",
     "static/media/send.mp3": "/static/media/send.a5bec8808418add8d0ce.mp3",
     "index.html": "/index.html",
-    "main.d19628d2.css.map": "/static/css/main.d19628d2.css.map",
-    "main.6e4e96e7.js.map": "/static/js/main.6e4e96e7.js.map",
+    "main.be811de9.css.map": "/static/css/main.be811de9.css.map",
+    "main.2e5724d4.js.map": "/static/js/main.2e5724d4.js.map",
     "787.d3828a64.chunk.js.map": "/static/js/787.d3828a64.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d19628d2.css",
-    "static/js/main.6e4e96e7.js"
+    "static/css/main.be811de9.css",
+    "static/js/main.2e5724d4.js"
   ]
 }
